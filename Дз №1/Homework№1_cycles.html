@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // №1
+        {
+            let str = "";
+            let chars = "|_";
+            let i = 0;
+
+            while (i < 9) {
+                str += chars + "\n";
+                chars = chars + "|_";
+                i++;
+            }
+
+            console.log(str)
+        }
+
+        // №2
+        {
+            let str = "";
+            let whiteSquare = "\u2B1C";
+            let blackSquare = "\u2B1B";
+
+            for (let i = 0; i < 8; i++) {
+                for (let k = 0; k < 8; k++) {
+                    if (k % 2 == 0) str += whiteSquare;
+                    else str += blackSquare;
+                }
+                
+                let temp = whiteSquare;
+                whiteSquare = blackSquare;
+                blackSquare = temp;
+                str += "\n";
+            }
+
+            console.log(str);
+        }
+    </script>
+</body>
+</html>

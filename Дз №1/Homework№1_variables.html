@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+
+    </style>
+    <script>
+        // №1
+        {
+            let width = prompt("Enter width");
+            let length = prompt("Enter length");
+
+            if (width != "" && length != "" && width != null && length != null && typeof +width == "number" && typeof +length == "number" && !Number.isNaN(+width) && !Number.isNaN(+length)) {
+                width = +width;
+                length = +length
+                let square = width * length;
+                let perimeter = 2 * (width + length);
+
+                if (width === length) console.log(`square = ${square}`, `perimeter = ${perimeter}`, "квадрат");
+                else console.log(`square = ${square}`, `perimeter = ${perimeter}`);
+            } else {
+                console.log("input is empty or invalid value");
+            }
+        }
+
+        // №2 - первый способ
+        {
+            let month = prompt("Enter number of month");
+
+            if (month != "" && month != null && typeof +month == "number" && !Number.isNaN(+month)) {
+                month = +month;
+
+                if (month == 0 || month == 1 || month == 11) {
+                    console.log("winter");
+                } 
+                else if (month >= 2 && month <= 4) {
+                    console.log("spring");
+                }
+                else if (month >= 5 && month <= 7) {
+                    console.log("summer");
+                }
+                else if (month >= 8 && month <= 10) {
+                    console.log("auttumn");
+                }
+                else {
+                    console.log("invalid number");
+                }
+            } else {
+                console.log("input is empty or invalid value");
+            }
+        }
+
+        // №2 - второй способ
+        {
+            let month = prompt("Enter number of month");
+
+            if (month != "" && month != null && typeof +month == "number" && !Number.isNaN(+month)) {
+                month = +month;
+
+                let months = [
+                    {
+                        numbers: [0, 1, 11],
+                        timeOfYear: "winter",
+                    },
+                    {
+                        numbers: [2, 3, 4],
+                        timeOfYear: "spring",
+                    },
+                    {
+                        numbers: [5, 6, 7],
+                        timeOfYear: "summer",
+                    },
+                    {
+                        numbers: [8, 9, 10],
+                        timeOfYear: "auttumn",
+                    },
+                ]
+            
+                if (month >= 0 && month <= 11) {
+                    for (let i = 0; i < months.length; i++) {
+                        if (months[i].numbers.includes(month)) console.log(months[i].timeOfYear);
+                    }
+                } else {
+                    console.log("invalid number");
+                }
+            } else {
+                console.log("input is empty or invalid value");
+            }
+        }
+
+        // №3
+        {
+            let num = prompt("Enter number");
+            let isEven = null;
+            let isInteger = null;
+            let isPlus = null;
+
+            if (num != "" && num != null && typeof +num == "number" && !Number.isNaN(+num)) {
+                if (num % 2 == 0) isEven = "четное";
+                else isEven = "нечетное";
+                
+                if (num % 1 == 0) isInteger = "целое";
+                else isInteger = "дробное";
+                
+                if (num > 0) isPlus = "положительное";
+                else if (num == 0) isPlus = "ни положительное, ни отрицательное";
+                else isPlus = "отрицательное";
+                
+                console.log(`Число ${num} ${isEven}, ${isInteger} и ${isPlus}`);
+            } else {
+                console.log("input is empty or invalid value");
+            }
+        }
+    </script>
+</body>
+</html>
