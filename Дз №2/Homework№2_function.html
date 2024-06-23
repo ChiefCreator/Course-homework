@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function quadraticEquation(a, b, c) {
+            if (typeof a === "undefined" || typeof b === "undefined" || typeof c === "undefined") {
+                console.log("Coefficients are not entered");
+                return;
+            }
+            if (a === 0) {
+                console.log("a is not be 0");
+                return;
+            }
+
+            let discriminant = b**2 - 4 * a * c;
+
+            if (discriminant > 0) {
+                let x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                let x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                console.log(`уравнение ${writeEquationByCoefficients(a, b, c)} имеет корни x1 = ${x1} x2 = ${x2}`);
+            }
+            else if (discriminant === 0) {
+                let x = -b / (2 * a);
+                console.log(`уравнение ${writeEquationByCoefficients(a, b, c)} имеет один корень x = ${x}`);
+            }
+            else {
+                console.log(`уравнение ${writeEquationByCoefficients(a, b, c)} не имеет вещественных корней`);
+            }
+
+            function writeEquationByCoefficients(a, b, c) {
+                let firstSign = a < 0 ? "-" : "";
+                let secondSign = b < 0 ? "-" : "+";
+                let thirdSign = c < 0 ? "-" : "+";
+
+                if (c !== 0 && b !== 0) {
+                    if ((a === 1 || a === -1) && (b === 1 || b === -1)) return `${firstSign}x^2 ${secondSign} x ${thirdSign} ${Math.abs(c)} = 0`;
+                    else if (a === 1 || a === -1) return `${firstSign}x^2 ${secondSign} ${Math.abs(b)}x ${thirdSign} ${Math.abs(c)} = 0`;
+                    else if (b === 1 || b === -1) return `${firstSign}${Math.abs(a)}x^2 ${secondSign} x ${thirdSign} ${Math.abs(c)} = 0`;
+                    else return `${firstSign}${Math.abs(a)}x^2 ${secondSign} ${Math.abs(b)}x ${thirdSign} ${Math.abs(c)} = 0`;
+                }
+                else if (c !== 0 && b === 0) {
+                    if (a === 1 || a === -1) return `${firstSign}x^2 ${thirdSign} ${Math.abs(c)} = 0`;
+                    else return `${firstSign}${Math.abs(a)}x^2 ${thirdSign} ${Math.abs(c)} = 0`;
+                }
+                else if (c === 0 && b !== 0) {
+                    if ((a === 1 || a === -1) && (b === 1 || b === -1)) return `${firstSign}x^2 ${secondSign} x = 0`;
+                    else if (a === 1 || a === -1) return `${firstSign}x^2 ${secondSign} ${Math.abs(b)}x = 0`;
+                    else if (b === 1 || b === -1) return `${firstSign}${Math.abs(a)}x^2 ${secondSign} x = 0`;
+                    else return `${firstSign}${Math.abs(a)}x^2 ${secondSign} ${Math.abs(b)}x = 0`;
+                }
+                else if (c === 0 && b === 0){
+                    if (a === 1 || a === -1) return `${firstSign}x^2 = 0`;
+                    else return `${firstSign}${Math.abs(a)}x^2 = 0`;
+                }
+            }
+        }
+
+        quadraticEquation(1, -8, 72);
+        quadraticEquation(1, 12, 36);
+        quadraticEquation(4, -8, 1);
+
+        quadraticEquation(-1, -8, 1);
+        quadraticEquation(0, -2, -3);
+        quadraticEquation(-1, 0, 3);
+        quadraticEquation(-1, 2, 0);
+    </script>
+</body>
+</html>
